@@ -3,24 +3,33 @@
 import { Menu } from "lucide-react";
 import { useTheme } from "next-themes";
 
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 import { Button } from "./ui/button";
 
-const MainNavigationMenu: React.FC = () => {
-  const { setTheme } = useTheme();
-  let colorMode: "light" | "dark" | "system" = "dark";
+const MainNavigationMenu = () => {
+  const { theme, setTheme } = useTheme();
 
-  // FIXME: Color mode
   const toggleDarkMode = () => {
-    setTheme(colorMode);
-    colorMode = colorMode === "dark" ? "light" : "dark"; 
+    if (theme === "dark") {
+      setTheme("light");
+      return;
+    }
+
+    setTheme("dark");
   };
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
-        <Button variant="outline">
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" className="rounded-md">
           <Menu className="mr-2 h-4 w-4" />
           <span>Menu</span>
         </Button>
@@ -32,18 +41,26 @@ const MainNavigationMenu: React.FC = () => {
         <DropdownMenuItem>Remove task</DropdownMenuItem>
         <DropdownMenuItem>Clear all tasks</DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={toggleDarkMode}>{`Toggle ${colorMode} mode`}</DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={toggleDarkMode}
+        >{`Toggle ${theme} mode`}</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
-}
+};
 
-const MainNavigation: React.FC = () => {
+const MainNavigationBranding = () => {
   return (
-    <div className="flex justify-between py-5 ">
-      <div>
-        <h1 className="font-extrabold text-2xl">Todot</h1>
-      </div>
+    <div>
+      <h1 className="font-extrabold text-[2.5rem]">Todot</h1>
+    </div>
+  );
+};
+
+const MainNavigation = () => {
+  return (
+    <div className="flex justify-between items-center py-5 ">
+      <MainNavigationBranding />
       <MainNavigationMenu />
     </div>
   );
