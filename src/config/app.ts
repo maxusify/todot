@@ -1,0 +1,1 @@
+export const ELLIPSIS_LIMIT = 75;
