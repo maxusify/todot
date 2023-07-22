@@ -1,5 +1,3 @@
-import Footer from "@/components/footer";
-import MainNavigation from "@/components/main-navigation";
 import Tasks from "@/components/tasks/tasks";
 import { Task } from "@/types";
 
