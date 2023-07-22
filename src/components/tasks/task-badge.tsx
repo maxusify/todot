@@ -10,14 +10,6 @@ interface Props {
   status: TaskStatus;
 }
 
-const colorStrength = 400;
-
-const colorMap = {
-  done: "outline",
-  todo: "default",
-  abandoned: "secondary",
-};
-
 const TaskBadge = ({ status }: Props) => {
   return (
     <Link href="#" className={cn(badgeVariants({ variant: "secondary" }))}>
