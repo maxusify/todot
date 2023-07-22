@@ -2,6 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { format } from "date-fns";
+import Link from "next/link";
 
 import { ellipsis } from "@/lib/utils";
 import { Task } from "@/types";
@@ -39,7 +40,11 @@ export const columns: ColumnDef<Task>[] = [
     accessorKey: "title",
     header: "Title",
     cell: ({ row }) => (
-      <div className="text-ellipsis ...">{ellipsis(row.getValue("title"))}</div>
+      <Link href={`/task/${row.original.id}`}>
+        <div className="text-ellipsis ...">
+          {ellipsis(row.getValue("title"))}
+        </div>
+      </Link>
     ),
   },
   {
