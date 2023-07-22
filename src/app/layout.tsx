@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import Footer from "@/components/footer";
+import MainNavigation from "@/components/main-navigation";
 import { ThemeProvider } from "@/components/theme-provider";
 import { fontSans } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
@@ -26,7 +28,11 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <div className="flex flex-col justify-center items-center">
-            <div className="md:w-[1024px] h-full">{children}</div>
+            <div className="md:w-[1024px] h-full">
+              <MainNavigation />
+              {children}
+              <Footer />
+            </div>
           </div>
         </ThemeProvider>
       </body>

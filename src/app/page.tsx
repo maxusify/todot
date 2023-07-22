@@ -34,9 +34,7 @@ export default async function Home() {
   const tasksData = await getData();
   return (
     <>
-      <MainNavigation />
       <Tasks data={tasksData} />
-      <Footer />
     </>
   );
 }

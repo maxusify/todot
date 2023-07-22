@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu } from "lucide-react";
+import { CalendarCheck, Menu } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import {
@@ -52,7 +52,10 @@ const MainNavigationMenu = () => {
 const MainNavigationBranding = () => {
   return (
     <div>
-      <h1 className="font-extrabold text-[2.5rem]">Todot</h1>
+      <h1 className="font-extrabold text-[2.5rem] flex items-center">
+        <CalendarCheck className="mr-2 w-9 h-9" />
+        <span>Todot</span>
+      </h1>
     </div>
   );
 };
