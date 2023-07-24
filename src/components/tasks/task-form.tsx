@@ -41,7 +41,7 @@ const TaskFormLimitIndicator = ({
   if (current >= Math.floor(limit * 0.7))
     return <span className={LESSER_WARNING_COLOR}>({charactersLeft})</span>;
 
-  return <span>{charactersLeft}</span>;
+  return <span>({charactersLeft})</span>;
 };
 
 const formSchema = z.object({
