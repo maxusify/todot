@@ -1,6 +1,6 @@
 import { Github } from "lucide-react";
 
-const Footer: React.FC = () => {
+const Footer = () => {
   return (
     <div className="absolute bottom-0 left-0 w-full flex justify-center py-5">
       <div>
