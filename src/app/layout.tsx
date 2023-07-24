@@ -10,7 +10,7 @@ import "@/styles/globals.css";
 
 export const metadata: Metadata = {
   title: "Todot",
-  description: "Demo Todo App by Michał Pędzik",
+  description: "Demo Todo App made with Next.js and shadcn/ui",
 };
 
 export default function RootLayout({
