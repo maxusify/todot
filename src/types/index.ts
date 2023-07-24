@@ -1,3 +1,3 @@
-import { Task, TaskStatus } from "./task"
+import { Task, TaskStatus } from "./task";
 
 export { type Task, type TaskStatus };
