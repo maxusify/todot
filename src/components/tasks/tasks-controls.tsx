@@ -2,6 +2,8 @@ import React from "react";
 
 import { Button } from "../ui/button";
 
+import TaskForm from "./task-form";
+
 type Props = {};
 
 const TasksControls = (props: Props) => {
@@ -14,6 +16,10 @@ const TasksControls = (props: Props) => {
       </p>
       <div className="mt-4">
         <Button>Quick Add</Button>
+      </div>
+      <div className="mt-4 border p-4 rounded-md">
+        <h3 className="font-bold mb-2">Add new task</h3>
+        <TaskForm />
       </div>
     </div>
   );
