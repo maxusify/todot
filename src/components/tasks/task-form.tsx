@@ -4,7 +4,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { X } from "lucide-react";
-import { z } from "zod";
 
 import {
   FORM_DESC_LIMIT,
@@ -12,6 +11,8 @@ import {
   IMPORTANT_WARNING_COLOR,
   LESSER_WARNING_COLOR,
 } from "@/config/app";
+import { addTask } from "@/lib/actions";
+import { FormTask, taskFormSchema } from "@/types/schemas/task-form";
 
 import { Button } from "../ui/button";
 import {
@@ -44,27 +45,18 @@ const TaskFormLimitIndicator = ({
   return <span>({charactersLeft})</span>;
 };
 
-const formSchema = z.object({
-  title: z
-    .string()
-    .min(2, { message: "Title must contain at least 2 charcters." })
-    .max(FORM_TITLE_LIMIT, {
-      message: "Title must contain a maximum of 150 characters.",
-    }),
-  description: z.optional(z.string().max(FORM_DESC_LIMIT)),
-});
-
 const TaskForm = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<FormTask>({
+    resolver: zodResolver(taskFormSchema),
     defaultValues: {
       title: "",
       description: "",
     },
   });
 
-  const onSubmitHandler = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+  const onSubmitHandler = async (values: FormTask) => {
+    await addTask(values);
+    form.reset();
   };
 
   return (

@@ -2,7 +2,7 @@ import { Github } from "lucide-react";
 
 const Footer = () => {
   return (
-    <div className="absolute bottom-0 left-0 w-full flex justify-center py-5">
+    <div className="absolute bottom-0 left-0 h-[100px] w-full flex justify-center items-center py-5">
       <div>
         <span>Made by</span>{" "}
         <a

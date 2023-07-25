@@ -27,14 +27,14 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <div className="flex flex-col justify-center items-center">
+          <div className="flex flex-col justify-center items-center mb-[100px]">
             <div className="md:w-[1024px] h-full">
               <MainNavigation />
               {children}
-              <Footer />
             </div>
           </div>
         </ThemeProvider>
+        <Footer />
       </body>
     </html>
   );

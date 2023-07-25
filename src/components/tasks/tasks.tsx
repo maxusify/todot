@@ -1,15 +1,15 @@
 "use client";
 
-import { Task } from "@/types";
+import { useLiveQuery } from "dexie-react-hooks";
+
+import { db } from "@/lib/db";
 
 import TasksControls from "./tasks-controls";
 import TasksList from "./tasks-list";
 
-interface TasksProps {
-  data: Task[];
-}
+const Tasks = () => {
+  const data = useLiveQuery(() => db.tasks.toArray());
 
-const Tasks = ({ data }: TasksProps) => {
   return (
     <>
       <TasksControls />
