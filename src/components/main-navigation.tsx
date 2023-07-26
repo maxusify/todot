@@ -4,9 +4,9 @@ import {
   Brush,
   CalendarCheck,
   Eraser,
+  FileDown,
+  FileUp,
   Menu,
-  MinusSquare,
-  PlusSquare,
   Settings,
 } from "lucide-react";
 import Link from "next/link";
@@ -50,16 +50,16 @@ const MainNavigationMenu = () => {
         <DropdownMenuLabel>Tasks</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem className={itemsStyle}>
-          <PlusSquare className={iconsStyle} />
-          Add task
-        </DropdownMenuItem>
-        <DropdownMenuItem className={itemsStyle}>
-          <MinusSquare className={iconsStyle} />
-          Remove task
-        </DropdownMenuItem>
-        <DropdownMenuItem className={itemsStyle}>
           <Eraser className={iconsStyle} />
           Clear all tasks
+        </DropdownMenuItem>
+        <DropdownMenuItem className={itemsStyle}>
+          <FileUp className={iconsStyle} />
+          Import tasks from file
+        </DropdownMenuItem>
+        <DropdownMenuItem className={itemsStyle}>
+          <FileDown className={iconsStyle} />
+          Export tasks to file
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuLabel>Application</DropdownMenuLabel>
