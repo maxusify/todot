@@ -13,6 +13,10 @@ export async function addTask(task: FormTask) {
     created_at: date,
   };
 
-  const id = await db.tasks.add(newTask);
-  console.log(`Added new task with id: ${id}`);
+  return await db.tasks.add(newTask);
+}
+
+export async function clearAllTasks() {
+  await db.tasks.clear();
+  console.log(`[Todot] All tasks have been cleared.`);
 }
