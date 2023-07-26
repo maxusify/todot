@@ -26,9 +26,9 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex flex-col justify-center items-center mb-[100px]">
-            <div className="md:w-[1024px] h-full">
+            <div className="w-full lg:w-[1024px] h-full">
               <MainNavigation />
               {children}
             </div>
