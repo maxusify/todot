@@ -1,6 +1,14 @@
 import React from "react";
 
 import { Button } from "../ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
 
 import TaskForm from "./task-form";
 
@@ -13,11 +21,23 @@ const TasksControls = () => {
         cillum sint consectetur cupidatat.
       </p>
       <div className="mt-4">
-        <Button>Quick Add</Button>
-      </div>
-      <div className="mt-4 border p-4 rounded-md">
-        <h3 className="font-bold mb-2">Add new task</h3>
-        <TaskForm />
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button>Quick Add</Button>
+          </DialogTrigger>
+          <DialogContent className="max-w-500px">
+            <DialogHeader>
+              <DialogTitle>Add new task</DialogTitle>
+              <DialogDescription>
+                You can add new task here. Click &quot;Add&quot; button when you
+                are done.
+              </DialogDescription>
+              <div className="pt-4">
+                <TaskForm />
+              </div>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );

@@ -7,6 +7,8 @@ import { X } from "lucide-react";
 
 import {
   FORM_DESC_LIMIT,
+  FORM_FIELD_LENGTH_IMPORTANT_WARN,
+  FORM_FIELD_LENGTH_LESSER_WARN,
   FORM_TITLE_LIMIT,
   IMPORTANT_WARNING_COLOR,
   LESSER_WARNING_COLOR,
@@ -35,14 +37,23 @@ const TaskFormLimitIndicator = ({
   current: number;
 }) => {
   const charactersLeft = limit - current;
+  const textStyles = "text-xs";
 
-  if (current >= Math.floor(limit * 0.9))
-    return <span className={IMPORTANT_WARNING_COLOR}>({charactersLeft})</span>;
+  if (current >= Math.floor(limit * FORM_FIELD_LENGTH_IMPORTANT_WARN))
+    return (
+      <span className={`${textStyles} ${IMPORTANT_WARNING_COLOR}`}>
+        ({charactersLeft})
+      </span>
+    );
 
-  if (current >= Math.floor(limit * 0.7))
-    return <span className={LESSER_WARNING_COLOR}>({charactersLeft})</span>;
+  if (current >= Math.floor(limit * FORM_FIELD_LENGTH_LESSER_WARN))
+    return (
+      <span className={`${textStyles} ${LESSER_WARNING_COLOR}`}>
+        ({charactersLeft})
+      </span>
+    );
 
-  return <span>({charactersLeft})</span>;
+  return <span className={textStyles}>({charactersLeft})</span>;
 };
 
 const TaskForm = () => {
@@ -81,7 +92,6 @@ const TaskForm = () => {
                 </div>
               </FormControl>
               <FormDescription>
-                Max of {FORM_TITLE_LIMIT} characters.{" "}
                 <TaskFormLimitIndicator
                   current={field.value.length}
                   limit={FORM_TITLE_LIMIT}
@@ -101,7 +111,6 @@ const TaskForm = () => {
                 <Textarea placeholder="This task is about..." {...field} />
               </FormControl>
               <FormDescription>
-                Max of {FORM_DESC_LIMIT} characters.{" "}
                 <TaskFormLimitIndicator
                   current={field.value?.length || 0}
                   limit={FORM_DESC_LIMIT}
