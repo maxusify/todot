@@ -2,12 +2,21 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { format } from "date-fns";
+import { MoreHorizontal } from "lucide-react";
 import Link from "next/link";
 
 import { ellipsis } from "@/lib/utils";
 import { Task } from "@/types";
 
+import { Button } from "../ui/button";
 import { Checkbox } from "../ui/checkbox";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 
 import TaskBadge from "./task-badge";
 
@@ -61,5 +70,24 @@ export const columns: ColumnDef<Task>[] = [
     accessorKey: "created_at",
     header: () => <div className="text-right">Created At</div>,
     cell: ({ row }) => formatDate(row.getValue("created_at")),
+  },
+  {
+    id: "actions",
+    cell: () => {
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <Button variant="ghost" className="h-8 w-8 p-0">
+              <span className="sr-only">Open menu</span>
+              <MoreHorizontal className="w-4 h-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuItem>Test</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      );
+    },
   },
 ];
