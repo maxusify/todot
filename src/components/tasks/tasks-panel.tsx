@@ -23,7 +23,7 @@ const TasksPanel = () => {
       <div className="mt-4">
         <Dialog>
           <DialogTrigger asChild>
-            <Button>Quick Add</Button>
+            <Button>Add task</Button>
           </DialogTrigger>
           <DialogContent className="max-w-500px">
             <DialogHeader>
