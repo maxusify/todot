@@ -2,7 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { format } from "date-fns";
-import { MoreHorizontal } from "lucide-react";
+import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 import Link from "next/link";
 
 import { ellipsis } from "@/lib/utils";
@@ -21,7 +21,7 @@ import {
 import TaskBadge from "./task-badge";
 
 const formatDate = (value: string) => {
-  const formatted = format(new Date(value), "iiii, io MMM yyyy");
+  const formatted = format(new Date(value), "io MMM yyyy, HH:mm");
   return <div className="text-right">{formatted}</div>;
 };
 
@@ -47,7 +47,16 @@ export const columns: ColumnDef<Task>[] = [
   },
   {
     accessorKey: "title",
-    header: "Title",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Title <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
     cell: ({ row }) => (
       <Link href={`/task/${row.original.id}`}>
         <div className="text-ellipsis ...">
@@ -58,17 +67,46 @@ export const columns: ColumnDef<Task>[] = [
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Status <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
     cell: ({ row }) => <TaskBadge status={row.getValue("status")} />,
   },
   {
     accessorKey: "updated_at",
-    header: () => <div className="text-right">Updated At</div>,
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="flex w-full flex-row justify-end"
+        >
+          Updated At <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
     cell: ({ row }) => formatDate(row.getValue("updated_at")),
   },
   {
     accessorKey: "created_at",
-    header: () => <div className="text-right">Created At</div>,
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="flex w-full flex-row justify-end"
+        >
+          Created At <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
     cell: ({ row }) => formatDate(row.getValue("created_at")),
   },
   {
@@ -84,7 +122,8 @@ export const columns: ColumnDef<Task>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem>Test</DropdownMenuItem>
+            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuItem>Remove</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );

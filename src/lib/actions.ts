@@ -4,7 +4,7 @@ import { FormTask } from "@/types/schemas/task-form";
 import { db } from "./db";
 
 export async function addTask(task: FormTask) {
-  const date = new Date().toDateString();
+  const date = new Date().toString();
   const newTask: Task = {
     title: task.title,
     description: task.description,
