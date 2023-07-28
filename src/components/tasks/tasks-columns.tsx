@@ -69,15 +69,21 @@ export const columns: ColumnDef<Task>[] = [
     accessorKey: "status",
     header: ({ column }) => {
       return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Status <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+        <div className="flex items-center justify-center">
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Status <ArrowUpDown className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
       );
     },
-    cell: ({ row }) => <TaskBadge status={row.getValue("status")} />,
+    cell: ({ row }) => (
+      <div className="flex items-center justify-center">
+        <TaskBadge status={row.getValue("status")} />
+      </div>
+    ),
   },
   {
     accessorKey: "updated_at",
@@ -114,7 +120,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: () => {
       return (
         <DropdownMenu>
-          <DropdownMenuTrigger>
+          <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="h-8 w-8 p-0">
               <span className="sr-only">Open menu</span>
               <MoreHorizontal className="w-4 h-4" />
