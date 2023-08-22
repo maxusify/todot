@@ -56,7 +56,7 @@ const TaskFormLimitIndicator = ({
   return <span className={textStyles}>({charactersLeft})</span>;
 };
 
-const TaskForm = () => {
+const TaskForm = ({ onTaskSubmit }: { onTaskSubmit: () => void }) => {
   const form = useForm<FormTask>({
     resolver: zodResolver(taskFormSchema),
     defaultValues: {
@@ -68,6 +68,7 @@ const TaskForm = () => {
   const onSubmitHandler = async (values: FormTask) => {
     await addTask(values);
     form.reset();
+    onTaskSubmit();
   };
 
   return (

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 import { Button } from "../ui/button";
@@ -13,6 +15,10 @@ import {
 import TaskForm from "./task-form-add";
 
 const TasksPanel = () => {
+  const [open, setOpen] = React.useState(false);
+
+  const disableTaskDialog = () => setOpen(false);
+
   return (
     <div className="py-2 px-5 lg:px-0">
       <h1 className="font-bold text-2xl mb-2">Controls</h1>
@@ -21,7 +27,7 @@ const TasksPanel = () => {
         cillum sint consectetur cupidatat.
       </p>
       <div className="mt-4">
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button>Add task</Button>
           </DialogTrigger>
@@ -33,7 +39,7 @@ const TasksPanel = () => {
                 are done.
               </DialogDescription>
               <div className="pt-4">
-                <TaskForm />
+                <TaskForm onTaskSubmit={disableTaskDialog} />
               </div>
             </DialogHeader>
           </DialogContent>
