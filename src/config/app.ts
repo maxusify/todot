@@ -13,3 +13,6 @@ export const FORM_FIELD_LENGTH_LESSER_WARN: number = 0.7;
 export const IMPORTANT_WARNING_COLOR: string = "text-red-500";
 export const LESSER_WARNING_COLOR: string = "text-orange-400";
 export const CORRECT_COLOR: string = "text-green-400";
+
+// Logging
+export const PREFIX: string = "Todot";
